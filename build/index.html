@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="travelApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Travel App</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" href="css/spectre.css">
+    <link rel="stylesheet" href="css/app.css">
+    
+</head>
+<body>
+
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <header class="navbar bg-grey">
+        
+        <section class="navbar-section">
+            <a href="#" class="navbar-brand">Travel App</a>
+        </section>
+    
+    </header>
+
+    <div ng-view>
+        
+    </div>
+
+    <footer class="app-footer">
+        <p class="app-footer__text">Travel App: V <span app-version></span></p>
+    </footer>
+
+    <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+    -->
+    
+    <script src="app/libs/angular.js"></script>
+    <script src="app/libs/angular-route.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/trips/trips.js"></script>
+    <script src="app/new-trip/new-trip.js"></script>
+    <script src="app/trip/trip.js"></script>
+    <script src="app/edit-trip/edit-trip.js"></script>
+    <script src="app/new-stop/new-stop.js"></script>
+    <script src="app/stop/stop.js"></script>
+    <script src="app/edit-stop/edit-stop.js"></script>
+    <script src="app/services/model.service.js"></script>
+    <script src="app/components/version/version.js"></script>
+    <script src="app/components/version/version-directive.js"></script>
+    <script src="app/components/version/interpolate-filter.js"></script>
+</body>
+</html>

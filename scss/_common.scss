@@ -1,0 +1,27 @@
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+/* No JS message */
+.no-browser-support-message, .no-js-message {
+
+    width: 100%;
+    float: left;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: rgb(245, 229, 130);
+}
+
+.no-browser-support-message, .no-js-message__text {
+
+    color: rgb(122, 109, 22);
+}

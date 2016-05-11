@@ -1,0 +1,36 @@
+    <div class="container">
+        
+        <div class="columns">
+            
+            <div class="column col-4">
+
+                <div class="form-group" ng-class="{'has-danger': noCountry}">
+                    <label class="form-label" for="stop-country">Country</label>
+                    <input class="form-input" ng-model="stop.country" type="text" id="stop-country" placeholder="i.e. Slovenia" />
+                </div>
+
+                <div class="form-group" ng-class="{'has-danger': noPlace}">
+                    <label class="form-label" for="stop-place">Place</label>
+                    <input class="form-input" type="text" ng-model="stop.place" id="stop-place" placeholder="i.e. Ljubljana" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="stop-arr-date">Arrival Date</label>
+                    <input class="form-input" type="date" ng-model="stop.arr_date" id="stop-arr-date" placeholder="i.e. 10/05/2016" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="stop-dep-date">Departure Date</label>
+                    <input class="form-input" type="date" ng-model="stop.dep_date" id="stop-dep-date" placeholder="i.e. 15/05/2016" />
+                </div>
+                
+                <div class="text-right">
+                    <a class="btn btn-link" href="#/trips/{{parent_id}}">Cancel</a>
+                    <button class="btn btn-primary" ng-class="{'loading': saving}" ng-click="save(stop)">Create</button>
+                </div>
+
+            </div>
+            
+        </div>
+        
+    </div>
