@@ -1,29 +1,17 @@
 'use strict';
 
-angular.module('travelApp.editStop', ['ngRoute'])
+angular.module('travelApp.newStop', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/edit-stop/:parent_id/:id', {
-    templateUrl: 'app/edit-stop/edit-stop.html',
-    controller: 'EditStopCtrl'
+  $routeProvider.when('/new-stop/:id', {
+    templateUrl: 'templates/new-stop.html',
+    controller: 'NewStopCtrl'
   });
 }])
 
-.controller('EditStopCtrl', ['$scope', 'appModel', '$location', '$routeParams', '$filter', function($scope, appModel, $location, $routeParams, $filter) {
+.controller('NewStopCtrl', ['$scope', 'appModel', '$location', '$routeParams', function($scope, appModel, $location, $routeParams) {
     
-    var stop;
-        
-    $scope.parent_id = $routeParams.parent_id;
-    
-    $scope.id = $routeParams.id;
-    
-    stop = appModel.getStop($scope.parent_id, $scope.id);
-    
-    stop.arr_date = new Date(stop.arr_date);
-    
-    stop.dep_date = new Date(stop.dep_date);
-    
-    $scope.stop = stop;
+    $scope.parent_id = $routeParams.id;
 
     $scope.save = function (stop) {
         
@@ -61,7 +49,7 @@ angular.module('travelApp.editStop', ['ngRoute'])
             $scope.saving = true;
             
             // save the data
-            appModel.updateStop($scope.parent_id, stop.id, stop.country, stop.place, stop.arr_date, stop.dep_date);
+            appModel.saveStop($scope.parent_id, stop.country, stop.place, stop.arr_date, stop.dep_date);
             
             // now redirect
             $location.path('/trips/' + $scope.parent_id);

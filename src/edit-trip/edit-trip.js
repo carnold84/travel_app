@@ -4,7 +4,7 @@ angular.module('travelApp.editTrip', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/edit-trip/:id', {
-    templateUrl: 'app/edit-trip/edit-trip.html',
+    templateUrl: 'templates/edit-trip.html',
     controller: 'EditTripCtrl'
   });
 }])

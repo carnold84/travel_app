@@ -1,0 +1,33 @@
+/* app css stylesheet */
+.dropdown {
+    position: absolute;
+}
+
+.dropdown.right {
+    right: 10px;
+}
+
+.bg-grey {
+    background-color: #eeeeee;
+}
+
+.border-bt-grey {
+    border-bottom: #eeeeee solid 1px;
+}
+
+.app-footer {
+    padding: 10px;
+    border-top: #eeeeee solid 1px;
+}
+
+.app-footer__text {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    color: #999999;
+    margin: 0;
+}
+
+.columns {
+    flex-direction: row;
+    flex-wrap: wrap;
+}

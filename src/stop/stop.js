@@ -4,7 +4,7 @@ angular.module('travelApp.stop', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/trips/:parent_id/:id', {
-    templateUrl: 'app/stop/stop.html',
+    templateUrl: 'templates/stop.html',
     controller: 'StopCtrl'
   });
 }])

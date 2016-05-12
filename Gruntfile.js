@@ -18,27 +18,21 @@ module.exports = function(grunt) {
                 }]
             }
         },
-        requirejs : {
-
-            compile : {
-                options : {
-                    baseUrl : 'src/app',
-                    paths : {
-
-                        utilities : '../utilities',
-                        jquery : '../libs/jquery-2.2.0'
-                    },
-                    name : '../app',
-                    out : 'build/js/app-built.js'
-                }
+        'angular-builder': {
+            options: {
+                mainModule: 'travelApp'
+            },
+            app: {
+                src:  'src/**/*.js',
+                dest: 'build/js/app.js'
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-angular-builder');
 
     // Default task(s).
-    grunt.registerTask('default', ['sass', 'requirejs']);
+    grunt.registerTask('default', ['sass', 'angular-builder']);
 
 };

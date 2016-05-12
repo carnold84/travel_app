@@ -4,7 +4,7 @@ angular.module('travelApp.newTrip', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/new-trip', {
-    templateUrl: 'app/new-trip/new-trip.html',
+    templateUrl: 'templates/new-trip.html',
     controller: 'NewTripCtrl'
   });
 }])
