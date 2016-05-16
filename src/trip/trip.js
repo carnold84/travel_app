@@ -11,6 +11,8 @@ angular.module('travelApp.trip', ['ngRoute'])
 
 .controller('TripCtrl', ['$scope', 'appModel', '$routeParams', '$location', function($scope, appModel, $routeParams, $location) {
     
+    var params = $location.search();
+    
     $scope.id = $routeParams.id;
     
     $scope.trip = appModel.getTrip($scope.id);
@@ -19,12 +21,41 @@ angular.module('travelApp.trip', ['ngRoute'])
     
     $scope.showModal = false;
     
+    console.log(params);
+    
+    // check for message in params
+    if (params.tripUpdated) {
+            
+        $scope.message = {
+            text : params.tripUpdated ? params.tripUpdated + ' was updated' : undefined,
+            type : 'success'
+        }
+    }
+    
+    // check for message in params
+    if (params.stopAdded) {
+            
+        $scope.message = {
+            text : params.stopAdded ? params.stopAdded + ' was created' : undefined,
+            type : 'success'
+        }
+    }
+    
+    // check for message in params
+    if (params.stopDeleted) {
+            
+        $scope.message = {
+            text : params.stopDeleted ? params.stopDeleted + ' was removed' : undefined,
+            type : 'success'
+        }
+    }
+    
     $scope.delete = function () {
         
         appModel.deleteTrip($scope.id);
             
         // now redirect
-        $location.path('/trips/');
+        $location.path('/trips/').search({tripDeleted : $scope.trip.name});
     }
     
 }]);

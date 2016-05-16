@@ -1,0 +1,4 @@
+    <div class="toast" ng-show="message" ng-class="{'toast-success' : message.type == 'success', 'toast-danger' : message.type == 'failure'}">
+        <button class="btn btn-clear float-right" ng-click="message = undefined"></button>
+        {{message.text}}
+    </div>

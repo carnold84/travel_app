@@ -1,52 +1,54 @@
-    <header class="navbar border-bt-grey">
-        
-        <section class="navbar-section">
-            <a href="#" class="navbar-brand">Trips</a>
-        </section>
-        
-        <section class="navbar-section">
-            <a href="#/new-trip" class="btn btn-primary">New Trip</a>
-        </section>
-    
-    </header>
+        <div class="container">
 
-    <div class="container">
-        
-        <div class="columns">
+            <header class="navbar border-bt-grey">
+
+                <section class="navbar-section">
+                    <a href="#" class="navbar-brand">Trips</a>
+                </section>
+
+                <section class="navbar-section">
+                    <a href="#/new-trip" class="btn btn-primary">New Trip</a>
+                </section>
+
+            </header>
             
-            <div class="column col-sm-12" ng-show="!trips.length">
+            <ng-include src="'templates/message_include.html'"></ng-include>
 
-                <div class="empty">
-                    <p class="empty-title">You have no trips</p>
-                    <p class="empty-meta">Click the button to create one.</p>
-                    <a class="btn btn-primary" href="#/new-trip">Create a trip</a>
-                </div>
+            <div class="columns">
 
-            </div>
+                <div class="column col-sm-12" ng-show="!trips.length">
 
-            <div class="column col-xs-12 col-sm-6 col-md-4" ng-repeat="trip in trips track by $index">
-
-                <div class="card">
-                    
-                    <div class="card-image">
-                        <a href="#/trips/{{trip.id}}">
-                            <img class="img-responsive centered mt-10" width="128" height="128" src="images/trip-placeholder.svg" />
-                        </a>
-                    </div>
-
-                    <div class="card-header">
-                        <h4 class="card-title"><a href="#/trips/{{trip.id}}">{{trip.name}}</a></h4>
-                        <h6 class="card-meta">{{trip.stops.length ? trip.stops[0].arr_date : 'No stops' | date:'ddMM/yyyy'}}</h6>
-                    </div>
-
-                    <div class="card-body">
-                        {{trip.description}}
+                    <div class="empty">
+                        <p class="empty-title">You have no trips</p>
+                        <p class="empty-meta">Click the button to create one.</p>
+                        <a class="btn btn-primary" href="#/new-trip">Create a trip</a>
                     </div>
 
                 </div>
 
+                <div class="column col-xs-12 col-sm-6 col-md-4" ng-repeat="trip in trips track by $index">
+
+                    <div class="card">
+
+                        <div class="card-image">
+                            <a href="#/trips/{{trip.id}}">
+                                <img class="img-responsive centered mt-10" width="128" height="128" src="images/trip-placeholder.svg" />
+                            </a>
+                        </div>
+
+                        <div class="card-header">
+                            <h4 class="card-title"><a href="#/trips/{{trip.id}}">{{trip.name}}</a></h4>
+                            <h6 class="card-meta">{{trip.stops.length ? trip.stops[0].arr_date : 'No stops' | date:'dd/MM/yyyy'}}</h6>
+                        </div>
+
+                        <div class="card-body">
+                            {{trip.description}}
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-            
+
         </div>
-        
-    </div>

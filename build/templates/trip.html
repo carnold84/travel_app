@@ -1,92 +1,98 @@
-    <div class="modal active" ng-show="showModal">
-        <div class="modal-overlay"></div>
-        <div class="modal-container">
-            <div class="modal-header">
-                <button class="btn btn-clear float-right"></button>
-                <div class="modal-title">Delete {{trip.name}}?</div>
-            </div>
-            <div class="modal-body">
-                <div class="content">
-                    Are you sure you want delete {{trip.name}}?
+    <div class="container"> 
+
+        <div class="modal active" ng-show="showModal">
+            <div class="modal-overlay"></div>
+            <div class="modal-container">
+                <div class="modal-header">
+                    <button class="btn btn-clear float-right"></button>
+                    <div class="modal-title">Delete {{trip.name}}?</div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-link" ng-click="showModal = !showModal">Close</button>
-                <button class="btn btn-primary" ng-click="delete()">Delete</button>
+                <div class="modal-body">
+                    <div class="content">
+                        Are you sure you want delete {{trip.name}}?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-link" ng-click="showModal = !showModal">Close</button>
+                    <button class="btn btn-primary" ng-click="delete()">Delete</button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <header class="navbar border-bt-grey">
-        
-        <section class="navbar-section">
-            <a href="#/trips/" class="btn">Back</a>
-        </section>
-        
-        <section class="navbar-section">
-            
-            <a href="#/new-stop/{{id}}" class="btn btn-primary">New Stop</a>
-            
-            <button class="btn" ng-click="showOptions = !showOptions">Options</button>
-            
-        </section>
-    
-    </header>
-        
-    <ul class="menu dropdown right" ng-show="showOptions">
+        <header class="navbar border-bt-grey">
 
-        <li class="menu-item">
-            <a href="#/edit-trip/{{trip.id}}">
-                <span class="icon icon-link"></span> Edit {{trip.name}}
-            </a>
-        </li>
+            <section class="navbar-section">
+                <a href="#/trips/" class="btn">Back</a>
+            </section>
 
-        <li class="menu-item">
-            <a ng-click="showModal = !showModal">
-                <span class="icon icon-link"></span> Delete {{trip.name}}
-            </a>
-        </li>
+            <section class="navbar-section">
 
-    </ul>
+                <a href="#/new-stop/{{id}}" class="btn btn-primary">New Stop</a>
 
-    <div class="container">
-        
-        <h3 class="navbar-brand">{{trip.name}}</h3>
-        
-        <div class="columns">
-            
-            <div class="column col-12" ng-show="!stops.length">
+                <button class="btn" ng-click="showOptions = !showOptions">Options</button>
 
-                <div class="empty">
-                    <p class="empty-title">You have no stops</p>
-                    <p class="empty-meta">Click the button to create one.</p>
-                    <a class="btn btn-primary" href="#/new-stop/{{id}}">Create a stop</a>
-                </div>
+            </section>
 
-            </div>
+        </header>
 
-            <div class="column col-4" ng-repeat="stop in stops track by $index">
+        <ul class="menu dropdown right" ng-show="showOptions">
 
-                <div class="card">
-                    
-                    <div class="card-image">
-                        <a href="#/trips/{{id}}/{{stop.id}}">
-                            <img class="img-responsive centered mt-10" width="128" height="128" src="images/location-placeholder.svg" />
-                        </a>
-                    </div>
+            <li class="menu-item">
+                <a href="#/edit-trip/{{trip.id}}">
+                    <span class="icon icon-link"></span> Edit {{trip.name}}
+                </a>
+            </li>
 
-                    <div class="card-header">
-                        <h4 class="card-title"><a href="#/trips/{{id}}/{{stop.id}}">{{stop.place}}</a></h4>
-                        <h5 class="card-meta">{{stop.country}}</h5>
-                        <h6 class="card-meta">
-                            {{stop.arr_date && stop.dep_date ? (stop.arr_date | date:'dd/MM/yyyy') + ' - ' + (stop.dep_date | date:'dd/MM/yyyy') : 'No Dates'}}
-                        </h6>
+            <li class="menu-item">
+                <a ng-click="showModal = !showModal">
+                    <span class="icon icon-link"></span> Delete {{trip.name}}
+                </a>
+            </li>
+
+        </ul>
+
+        <div class="container">
+
+                <h3>{{trip.name}}</h3>
+
+                <ng-include src="'templates/message_include.html'"></ng-include>
+
+            <div class="columns">
+
+                <div class="column col-12" ng-show="!stops.length">
+
+                    <div class="empty">
+                        <p class="empty-title">You have no stops</p>
+                        <p class="empty-meta">Click the button to create one.</p>
+                        <a class="btn btn-primary" href="#/new-stop/{{id}}">Create a stop</a>
                     </div>
 
                 </div>
 
+                <div class="column col-4" ng-repeat="stop in stops track by $index">
+
+                    <div class="card">
+
+                        <div class="card-image">
+                            <a href="#/trips/{{id}}/{{stop.id}}">
+                                <img class="img-responsive centered mt-10" width="128" height="128" src="images/location-placeholder.svg" />
+                            </a>
+                        </div>
+
+                        <div class="card-header">
+                            <h4 class="card-title"><a href="#/trips/{{id}}/{{stop.id}}">{{stop.place}}</a></h4>
+                            <h5 class="card-meta">{{stop.country}}</h5>
+                            <h6 class="card-meta">
+                                {{stop.arr_date && stop.dep_date ? (stop.arr_date | date:'dd/MM/yyyy') + ' - ' + (stop.dep_date | date:'dd/MM/yyyy') : 'No Dates'}}
+                            </h6>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-            
+
         </div>
         
     </div>

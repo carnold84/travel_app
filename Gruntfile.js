@@ -24,15 +24,33 @@ module.exports = function(grunt) {
             },
             app: {
                 src:  'src/**/*.js',
-                dest: 'build/js/app.js'
+                dest: 'compiled/app.js'
+            }
+        },
+        uglify : {
+            app : {
+                files : [{
+                    expand : true,
+                    cwd: 'compiled',
+                    src: '**/*.js',
+                    dest: 'build/js/'
+                }]
+            }
+        },
+        watch: {
+            src: {
+                files: ['scss/**/*.scss', 'src/**/*.js'],
+                tasks: ['default']
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-angular-builder');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Default task(s).
-    grunt.registerTask('default', ['sass', 'angular-builder']);
+    grunt.registerTask('default', ['sass', 'angular-builder', 'uglify']);
 
 };

@@ -9,7 +9,7 @@ angular.module('travelApp.newTrip', ['ngRoute'])
   });
 }])
 
-.controller('NewTripCtrl', ['$scope', 'appModel', '$location', function($scope, appModel, $location) {
+.controller('NewTripCtrl', ['$rootScope', '$scope', 'appModel', '$location', '$animate', function($rootScope, $scope, appModel, $location, $animate) {
 
     $scope.save = function (trip) {
         console.log(trip);
@@ -17,7 +17,7 @@ angular.module('travelApp.newTrip', ['ngRoute'])
         $scope.error = false;
         
         // check if name has been entered
-        if (trip === undefined || (trip.name === undefined || trip.name === "")) {
+        if (trip === undefined || (trip.name === undefined || trip.name === '')) {
             
             // no name so set as error
             $scope.error = true;
@@ -31,7 +31,7 @@ angular.module('travelApp.newTrip', ['ngRoute'])
             appModel.saveTrip(trip.name, trip.description);
             
             // now redirect
-            $location.path('/trips');
+            $location.path('/trips/').search({tripAdded : trip.name});
         }
     };
     

@@ -34,7 +34,7 @@ angular.module('travelApp.editTrip', ['ngRoute'])
             appModel.updateTrip($scope.id, trip.name, trip.description);
             
             // now redirect
-            $location.path('/trips');
+            $location.path('/trips/' + $scope.id).search({tripUpdated : trip.name});
         }
     };
     

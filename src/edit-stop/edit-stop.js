@@ -64,7 +64,7 @@ angular.module('travelApp.editStop', ['ngRoute'])
             appModel.updateStop($scope.parent_id, stop.id, stop.country, stop.place, stop.arr_date, stop.dep_date);
             
             // now redirect
-            $location.path('/trips/' + $scope.parent_id);
+            $location.path('/trips/' + $scope.parent_id + '/' + stop.id).search({stopUpdated : stop.place + ', ' + stop.country});
         }
     };
     

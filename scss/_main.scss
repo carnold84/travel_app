@@ -31,3 +31,25 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.view {
+    position: absolute;
+    width: 100%;
+    
+    &.ng-animate {
+        opacity: 0;
+        transition: opacity 500ms ease;
+    }
+
+    &.ng-enter {
+        opacity: 0;
+    }
+
+    &.ng-enter-active {
+        opacity: 1;
+    }
+
+    &.ng-leave {
+        opacity: 0;
+    }
+}

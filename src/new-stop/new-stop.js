@@ -52,7 +52,7 @@ angular.module('travelApp.newStop', ['ngRoute'])
             appModel.saveStop($scope.parent_id, stop.country, stop.place, stop.arr_date, stop.dep_date);
             
             // now redirect
-            $location.path('/trips/' + $scope.parent_id);
+            $location.path('/trips/' + $scope.parent_id).search({stopAdded : stop.place + ', ' + stop.country});
         }
     };
     
