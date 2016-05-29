@@ -32,6 +32,13 @@
     flex-wrap: wrap;
 }
 
+.banner {
+    width: 100%;
+    height: 300px;
+    background-position: center center;
+    background-size: cover;
+}
+
 .view {
     position: absolute;
     width: 100%;

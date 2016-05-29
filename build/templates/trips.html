@@ -1,16 +1,16 @@
-        <div class="container">
+    <header class="navbar border-bt-grey">
 
-            <header class="navbar border-bt-grey">
+        <section class="navbar-section">
+            <a href="#" class="navbar-brand">Trips</a>
+        </section>
 
-                <section class="navbar-section">
-                    <a href="#" class="navbar-brand">Trips</a>
-                </section>
+        <section class="navbar-section">
+            <a href="#/new-trip" class="btn btn-primary">New Trip</a>
+        </section>
 
-                <section class="navbar-section">
-                    <a href="#/new-trip" class="btn btn-primary">New Trip</a>
-                </section>
+    </header>
 
-            </header>
+    <div class="container">
             
             <ng-include src="'templates/message_include.html'"></ng-include>
 
@@ -26,7 +26,7 @@
 
                 </div>
 
-                <div class="column col-xs-12 col-sm-6 col-md-4" ng-repeat="trip in trips track by $index">
+                <div class="column col-xs-12 col-sm-6 col-md-3" ng-repeat="trip in trips track by $index">
 
                     <div class="card">
 

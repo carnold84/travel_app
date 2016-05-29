@@ -1,84 +1,63 @@
-    <div class="container"> 
+    <header class="navbar border-bt-grey">
+
+        <section class="navbar-section">
+            <a href="#/trips/{{parent_id}}" class="btn">Back</a>
+        </section>
+
+        <section class="navbar-section">
+
+            <button class="btn" ng-click="showOptions = !showOptions">Options</button>
+
+        </section>
+
+    </header>
         
-        <div class="modal active" ng-show="showModal">
-            <div class="modal-overlay"></div>
-            <div class="modal-container">
-                <div class="modal-header">
-                    <button class="btn btn-clear float-right"></button>
-                    <div class="modal-title">Delete {{stop.place}}, {{stop.country}}?</div>
-                </div>
-                <div class="modal-body">
-                    <div class="content">
-                        Are you sure you want delete {{stop.place}}, {{stop.country}}?
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-link" ng-click="showModal = !showModal">Close</button>
-                    <button class="btn btn-primary" ng-click="delete()">Delete</button>
+    <div class="modal active" ng-show="showModal">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <button class="btn btn-clear float-right"></button>
+                <div class="modal-title">Delete {{stop.place}}, {{stop.country}}?</div>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    Are you sure you want delete {{stop.place}}, {{stop.country}}?
                 </div>
             </div>
-        </div>
-
-        <header class="navbar border-bt-grey">
-
-            <section class="navbar-section">
-                <a href="#/trips/{{parent_id}}" class="btn">Back</a>
-            </section>
-
-            <section class="navbar-section">
-
-                <button class="btn" ng-click="showOptions = !showOptions">Options</button>
-
-            </section>
-
-        </header>
-
-        <ul class="menu dropdown right" ng-show="showOptions">
-
-            <li class="menu-item">
-                <a href="#/edit-stop/{{parent_id}}/{{stop.id}}">
-                    <span class="icon icon-link"></span> Edit {{stop.place}}
-                </a>
-            </li>
-
-            <li class="menu-item">
-                <a ng-click="showModal = !showModal">
-                    <span class="icon icon-link"></span> Delete {{stop.place}}
-                </a>
-            </li>
-
-        </ul>
-
-        <div class="container">
-
-            <h3>{{stop.place}}</h3>
-
-            <ng-include src="'templates/message_include.html'"></ng-include>
-
-            <div class="columns">
-
-                <div class="column col-12">
-
-                    <div class="card">
-
-                        <div class="card-image">
-                            <img class="img-responsive centered mt-10" width="128" height="128" src="images/location-placeholder.svg" />
-                        </div>
-
-                        <div class="card-header">
-                            <h4 class="card-title">{{stop.place}}</h4>
-                            <h5 class="card-meta">{{stop.country}}</h5>
-                            <h6 class="card-meta">
-                                {{stop.arr_date && stop.dep_date ? (stop.arr_date | date:'dd/MM/yyyy') + ' - ' + (stop.dep_date | date:'dd/MM/yyyy') : 'No Dates'}}
-                            </h6>
-                        </div>
-
-                    </div>
-
-                </div>
-
+            <div class="modal-footer">
+                <button class="btn btn-link" ng-click="showModal = !showModal">Close</button>
+                <button class="btn btn-primary" ng-click="delete()">Delete</button>
             </div>
-
         </div>
-        
+    </div>
+
+    <ul class="menu dropdown right" ng-show="showOptions">
+
+        <li class="menu-item">
+            <a href="#/edit-stop/{{parent_id}}/{{stop.id}}">
+                <span class="icon icon-link"></span> Edit {{stop.place}}
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a ng-click="showModal = !showModal">
+                <span class="icon icon-link"></span> Delete {{stop.place}}
+            </a>
+        </li>
+
+    </ul>
+
+    <div class="banner" style="background-image: url({{stop.image_url ? stop.image_url : 'images/location-placeholder.svg'}});"></div>
+
+    <div class="container">
+
+        <ng-include src="'templates/message_include.html'"></ng-include>
+
+        <h3>{{stop.place}}</h3>
+
+        <h5>{{stop.country}}</h5>
+        <h6>
+            {{stop.arr_date && stop.dep_date ? (stop.arr_date | date:'dd/MM/yyyy') + ' - ' + (stop.dep_date | date:'dd/MM/yyyy') : 'No Dates'}}
+        </h6>
+
     </div>

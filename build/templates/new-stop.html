@@ -3,15 +3,28 @@
         <div class="columns">
             
             <div class="column col-12">
+                
+                <div class="form-autocomplete">
+
+                    <div class="form-group" ng-class="{'has-danger': noPlace}">
+                        <label class="form-label" for="stop-place">Place</label>
+                        <input class="form-input" type="text" ng-model="stop.place" id="stop-place" placeholder="i.e. Ljubljana" style="text-transform: capitalize;" />
+                    </div>
+                    
+                    <ul class="form-autocomplete-list" ng-show="autoCompleteData">
+                        
+                        <li class="form-autocomplete-item" data-id="{{item.geonameId}}"" 
+                            ng-repeat="item in autoCompleteData track by $index" ng-click="onAutoCompleteItemSelect($event)">
+                            {{item.name ? item.name : item.message}}{{item.countryName ? ', ' + item.countryName : ''}}
+                        </li>
+                        
+                    </ul>
+                    
+                </div>
 
                 <div class="form-group" ng-class="{'has-danger': noCountry}">
                     <label class="form-label" for="stop-country">Country</label>
                     <input class="form-input" ng-model="stop.country" type="text" id="stop-country" placeholder="i.e. Slovenia" />
-                </div>
-
-                <div class="form-group" ng-class="{'has-danger': noPlace}">
-                    <label class="form-label" for="stop-place">Place</label>
-                    <input class="form-input" type="text" ng-model="stop.place" id="stop-place" placeholder="i.e. Ljubljana" />
                 </div>
 
                 <div class="form-group">

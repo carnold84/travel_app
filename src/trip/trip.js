@@ -21,7 +21,7 @@ angular.module('travelApp.trip', ['ngRoute'])
     
     $scope.showModal = false;
     
-    console.log(params);
+    console.log($scope.stops);
     
     // check for message in params
     if (params.tripUpdated) {

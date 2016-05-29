@@ -2,7 +2,7 @@
 
 angular.module('travelApp.model', [])
 
-.service('appModel', [function () {
+.service('appModel', ['$http', function ($http) {
     
     // check if there are trips already stored
     var data = localStorage.getItem('travelAppData');
@@ -111,10 +111,56 @@ angular.module('travelApp.model', [])
         return stop;
     };
     
-    this.saveStop = function (parent_id, country, place, arr_date, dep_date) {
+    this.saveStop = function (parent_id, stop) {
+            
+        var image_url = ['https://pixabay.com/api/?key=2632290-e29b2cf051ab8a625a0f808f6&orientation=horizontal&q=', stop.place, '+city'].join(''),
+            success_callback = onImageSuccess.bind(this),
+            fail_callback = onImageError.bind(this);
+            
+        $http({
+            method: 'GET',
+            url: image_url
+        }).then(function (response) {
+            success_callback(response, parent_id, stop);
+        }, function (response) {
+            fail_callback(response, parent_id, stop);
+        });
+    };
+    
+    function onImageSuccess (response, parent_id, stop) {
+
+        console.log(response);
+        
+        var image_url,
+            images = response.data.hits;
+
+        console.log(images);
+        
+        if (images.length > 0) {
+            
+            image_url = images[0].webformatURL;
+        }
+
+        console.log(image_url);
+
+        onImageFetched.apply(this, [parent_id, stop, image_url]);
+    }
+    
+    function onImageError (response, parent_id, stop) {
+
+        console.log(response);
+
+        onImageFetched.apply(this, [parent_id, stop, undefined]);
+    }
+    
+    function onImageFetched (parent_id, stop, image_url) {
+
+        console.log(parent_id);
         
         // store the trip
         var trip = this.getTrip(parent_id);
+
+        console.log(image_url);
         
         // make sure trip exists
         if (trip !== undefined) {
@@ -128,10 +174,14 @@ angular.module('travelApp.model', [])
             // now add the stop
             trip.stops.push({
                 id : 'uuid-' + Date.now(),
-                country : country,
-                place : place,
-                arr_date : new Date(arr_date).getTime(),
-                dep_date : new Date(dep_date).getTime()
+                country : stop.country,
+                place : stop.place,
+                arr_date : new Date(stop.arr_date).getTime(),
+                dep_date : new Date(stop.dep_date).getTime(),
+                lat : stop.lat,
+                lng : stop.lng,
+                population : stop.population,
+                image_url : image_url
             });
         }
         
